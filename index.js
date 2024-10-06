@@ -3,6 +3,7 @@ const morgan = require('morgan');
 const cors = require("cors");
 require('dotenv').config();
 const bodyParser = require('body-parser');
+const path = require('path');
 
 // Archivos de las rutas
 const userRoutes = require('./routes/userRoutes');
@@ -17,6 +18,10 @@ const dbConection = require('./configs/dbConfig');
 // Configuración del servidor para express
 const app = express();
 const port = process.env.PORT || 3000;
+app.use(express.static(path.join(__dirname, 'dist')));
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'))
+})
 
 // Inicialización de morgan
 app.use(morgan('dev'));
