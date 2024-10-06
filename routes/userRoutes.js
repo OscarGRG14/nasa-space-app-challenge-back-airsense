@@ -3,7 +3,7 @@ const { createUser, getAllUser, getUser, updateUser, deleteUser } = require('../
 const router = express.Router();
 
 // Ruta para crear el usuario
-router.post('/create', createUser);
+router.post('/register', createUser);
 
 // Ruta para obtener todos los usuarios
 router.get('/get-all', getAllUser);
